@@ -1,0 +1,13 @@
+.laced-border {
+  width: 100%;
+  height: 120px;
+  display: block;
+  margin-bottom: -2px;
+  background: linear-gradient(to bottom, rgba(204, 0, 0, 0.1), transparent);
+  position: relative;
+}
+
+.laced-border canvas {
+  width: 100%;
+  height: 100%;
+}

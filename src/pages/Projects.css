@@ -1,0 +1,473 @@
+.projects-page {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 25%, var(--bg-primary) 50%, var(--bg-tertiary) 75%, var(--bg-primary) 100%);
+  padding: 100px 120px 60px;
+  position: relative;
+  transition: background 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 10;
+}
+
+.page-header h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 15px;
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, #ffffff 0%, #ffccaa 50%, #e0e0e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Playfair Display', serif;
+  transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+[data-theme="light"] .page-header h1 {
+  background: linear-gradient(135deg, #ff6633 0%, #ff8844 50%, #ffaa66 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-header .subtitle {
+  font-size: 1.4rem;
+  color: var(--accent);
+  letter-spacing: 1.5px;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.featured-project {
+  max-width: 1200px;
+  margin: 0 auto 80px;
+  position: relative;
+  z-index: 10;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(40, 20, 15, 0.6) 100%);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 50px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .featured-grid {
+  background: linear-gradient(135deg, rgba(255, 250, 245, 0.95) 0%, rgba(245, 230, 220, 0.8) 100%);
+  border-color: rgba(255, 102, 51, 0.2);
+}
+
+.featured-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
+  transition: background 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.featured-image {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px var(--shadow);
+}
+
+[data-theme="light"] .featured-image {
+  box-shadow: 0 20px 50px rgba(255, 102, 51, 0.1);
+}
+
+.featured-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.featured-image:hover img {
+  transform: scale(1.05);
+}
+
+.featured-content h2 {
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.project-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 30px;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tools-section,
+.highlights-section {
+  margin-bottom: 25px;
+}
+
+.tools-section h3,
+.highlights-section h3 {
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-bottom: 15px;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tools-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tool-badge {
+  background: linear-gradient(135deg, rgba(255, 102, 51, 0.2), rgba(255, 102, 51, 0.1));
+  border: 1px solid var(--accent);
+  color: var(--accent-light);
+  padding: 10px 16px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .tool-badge {
+  background: linear-gradient(135deg, rgba(255, 102, 51, 0.1), rgba(255, 102, 51, 0.05));
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tool-badge:hover {
+  background: linear-gradient(135deg, rgba(255, 102, 51, 0.3), rgba(255, 102, 51, 0.2));
+  border-color: var(--accent-light);
+}
+
+[data-theme="light"] .tool-badge:hover {
+  background: linear-gradient(135deg, rgba(255, 102, 51, 0.2), rgba(255, 102, 51, 0.1));
+  border-color: var(--accent-light);
+  color: var(--accent-light);
+}
+
+.highlights-list {
+  list-style: none;
+  padding: 0;
+}
+
+.highlights-list li {
+  padding: 10px 0 10px 20px;
+  color: var(--text-secondary);
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.highlights-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.software-tools-section {
+  max-width: 1200px;
+  margin: 80px auto;
+  position: relative;
+  z-index: 10;
+}
+
+.software-tools-section h2 {
+  font-size: 2rem;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  font-family: 'Playfair Display', serif;
+  transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 50px;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.tool-card {
+  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(40, 20, 15, 0.7) 100%);
+  border: 1px solid var(--card-border);
+  border-radius: 15px;
+  padding: 35px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .tool-card {
+  background: linear-gradient(135deg, rgba(255, 250, 245, 0.9) 0%, rgba(245, 230, 220, 0.8) 100%);
+  border-color: rgba(255, 102, 51, 0.15);
+}
+
+.tool-card:hover {
+  border-color: var(--border-light);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px var(--shadow);
+}
+
+[data-theme="light"] .tool-card:hover {
+  border-color: rgba(255, 102, 51, 0.4);
+  box-shadow: 0 20px 50px rgba(255, 102, 51, 0.1);
+}
+
+.tool-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.tool-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.tool-card h3 {
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tool-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 15px;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tool-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.tool-card:hover .tool-link {
+  color: var(--accent-light);
+}
+
+.philosophy-section {
+  max-width: 900px;
+  margin: 80px auto;
+  position: relative;
+  z-index: 10;
+}
+
+.philosophy-card {
+  background: linear-gradient(135deg, rgba(255, 102, 51, 0.15) 0%, rgba(204, 51, 0, 0.08) 100%);
+  border: 2px solid var(--accent);
+  border-radius: 15px;
+  padding: 45px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+[data-theme="light"] .philosophy-card {
+  background: linear-gradient(135deg, rgba(255, 102, 51, 0.1) 0%, rgba(255, 102, 51, 0.05) 100%);
+}
+
+.philosophy-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
+  transition: background 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.philosophy-card h2 {
+  font-size: 1.6rem;
+  color: var(--accent);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+  font-family: 'Playfair Display', serif;
+  transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.philosophy-card p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 2;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.philosophy-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.philosophy-tags span {
+  background: linear-gradient(135deg, rgba(255, 102, 51, 0.2), rgba(255, 136, 68, 0.1));
+  border: 1.5px solid var(--accent);
+  color: var(--accent-light);
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .philosophy-tags span {
+  background: linear-gradient(135deg, rgba(255, 102, 51, 0.1), rgba(255, 136, 68, 0.05));
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.philosophy-tags span:hover {
+  background: linear-gradient(135deg, rgba(255, 102, 51, 0.3), rgba(255, 136, 68, 0.2));
+  border-color: var(--accent-light);
+  color: var(--accent-light);
+}
+
+.future-section {
+  max-width: 900px;
+  margin: 80px auto;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+
+.future-section h2 {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Playfair Display', serif;
+  transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.coming-soon-text {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.coming-soon-accent {
+  font-size: 1.2rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 3px;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media screen and (max-width: 1024px) {
+  .projects-page {
+    padding: 80px 60px;
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px;
+  }
+
+  .tools-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .projects-page {
+    padding: 60px 30px;
+  }
+
+  .page-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .page-header .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .featured-grid {
+    padding: 30px;
+  }
+
+  .featured-grid h2 {
+    font-size: 1.4rem;
+  }
+
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .philosophy-card {
+    padding: 30px;
+  }
+
+  .philosophy-card h2 {
+    font-size: 1.3rem;
+  }
+}
