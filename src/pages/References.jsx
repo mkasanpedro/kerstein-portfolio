@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import maamJen from '../assets/maamjen.jpg'
 import './References.css'
 
 function References() {
@@ -10,21 +11,37 @@ function References() {
       <motion.div
         className="page-header"
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
         <h1>REFERENCES</h1>
         <p className="subtitle">Professional Contacts & Recommendations</p>
       </motion.div>
 
-      {/* Reference Card */}
       <motion.div
         className="reference-card"
         initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <div className="ref-icon">👩‍🏫</div>
+        <div className="ref-icon" style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+          <img 
+            src={maamJen} 
+            alt="Dr. Jennifer Enriquez" 
+            style={{ 
+              width: '110px', 
+              height: '110px', 
+              borderRadius: '50%', 
+              objectFit: 'cover', 
+              objectPosition: 'top', 
+              border: '3px solid var(--accent)', 
+              display: 'block',
+              boxShadow: '0 8px 25px rgba(255, 102, 51, 0.3)'
+            }} 
+          />
+        </div>
         <h2>Dr. Jennifer B. Enriquez</h2>
         <p className="ref-role">Program Chair</p>
         <div className="ref-details">
@@ -36,11 +53,11 @@ function References() {
         </div>
       </motion.div>
 
-      {/* How to Request */}
       <motion.section
         className="how-to-section"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.4 }}
       >
         <h2>How to Request a Reference</h2>
@@ -60,11 +77,11 @@ function References() {
         </div>
       </motion.section>
 
-      {/* Get In Touch */}
       <motion.section
         className="touch-section"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.6 }}
       >
         <div className="touch-card">

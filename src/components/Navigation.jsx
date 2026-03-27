@@ -1,64 +1,94 @@
-import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
 import ThemeToggle from './ThemeToggle.jsx'
 import './Navigation.css'
 
 function Navigation() {
-  const location = useLocation()
+  const [activeSection, setActiveSection] = useState('home')
 
-  const isActive = (path) => location.pathname === path
+  // Smooth scroll function
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setActiveSection(id);
+    }
+  };
+
+  // Optional: Update active state based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'background', 'achievements', 'projects', 'references'];
+      const scrollPosition = window.scrollY + 200; // Offset for navbar
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element && element.offsetTop <= scrollPosition && (element.offsetTop + element.offsetHeight) > scrollPosition) {
+          setActiveSection(section);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <nav className="navbar">
       <div className="nav-container">
         <div className="nav-left">
           <ThemeToggle />
-          <Link to="/" className="nav-logo">
+          <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="nav-logo">
             <span className="logo-text">PORTFOLIO</span>
             <span className="logo-accent">.</span>
-          </Link>
+          </a>
         </div>
 
         <ul className="nav-menu">
           <li className="nav-item">
-            <Link
-              to="/"
-              className={`nav-link ${isActive('/') ? 'active' : ''}`}
+            <a
+              href="#home"
+              onClick={(e) => scrollToSection(e, 'home')}
+              className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}
             >
               HOME
-            </Link>
+            </a>
           </li>
           <li className="nav-item">
-            <Link
-              to="/background"
-              className={`nav-link ${isActive('/background') ? 'active' : ''}`}
+            <a
+              href="#background"
+              onClick={(e) => scrollToSection(e, 'background')}
+              className={`nav-link ${activeSection === 'background' ? 'active' : ''}`}
             >
               BACKGROUND
-            </Link>
+            </a>
           </li>
           <li className="nav-item">
-            <Link
-              to="/achievements"
-              className={`nav-link ${isActive('/achievements') ? 'active' : ''}`}
+            <a
+              href="#achievements"
+              onClick={(e) => scrollToSection(e, 'achievements')}
+              className={`nav-link ${activeSection === 'achievements' ? 'active' : ''}`}
             >
               ACHIEVEMENTS
-            </Link>
+            </a>
           </li>
           <li className="nav-item">
-            <Link
-              to="/projects"
-              className={`nav-link ${isActive('/projects') ? 'active' : ''}`}
+            <a
+              href="#projects"
+              onClick={(e) => scrollToSection(e, 'projects')}
+              className={`nav-link ${activeSection === 'projects' ? 'active' : ''}`}
             >
               PROJECTS
-            </Link>
+            </a>
           </li>
           <li className="nav-item">
-            <Link
-              to="/references"
-              className={`nav-link ${isActive('/references') ? 'active' : ''}`}
+            <a
+              href="#references"
+              onClick={(e) => scrollToSection(e, 'references')}
+              className={`nav-link ${activeSection === 'references' ? 'active' : ''}`}
             >
               REFERENCES
-            </Link>
+            </a>
           </li>
         </ul>
 

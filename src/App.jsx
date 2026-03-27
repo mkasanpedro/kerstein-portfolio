@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
 import Navigation from './components/Navigation.jsx'
 import Home from './pages/Home.jsx'
 import Background from './pages/Background.jsx'
@@ -11,7 +10,7 @@ import './App.css'
 function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePos({ x: e.clientX, y: e.clientY })
     }
@@ -21,25 +20,36 @@ function App() {
   }, [])
 
   return (
-    <Router>
-      <div 
-        className="app" 
-        style={{ 
-          '--mouse-x': `${mousePos.x}px`,
-          '--mouse-y': `${mousePos.y}px`
-        }}
-      >
-        <div className="cursor-gradient"></div>
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<Home mousePos={mousePos} />} />
-          <Route path="/background" element={<Background />} />
-          <Route path="/achievements" element={<Achievements />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/references" element={<References />} />
-        </Routes>
+    <div 
+      className="app" 
+      style={{ 
+        '--mouse-x': `${mousePos.x}px`,
+        '--mouse-y': `${mousePos.y}px`
+      }}
+    >
+      <div className="cursor-gradient"></div>
+      <Navigation />
+      
+      <div id="home">
+        <Home mousePos={mousePos} />
       </div>
-    </Router>
+      
+      <div id="background">
+        <Background />
+      </div>
+      
+      <div id="achievements">
+        <Achievements />
+      </div>
+      
+      <div id="projects">
+        <Projects />
+      </div>
+      
+      <div id="references">
+        <References />
+      </div>
+    </div>
   )
 }
 
