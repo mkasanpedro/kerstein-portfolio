@@ -38,6 +38,16 @@ function Projects() {
     ]
   }
 
+  // --- NEW: GitHub Projects Data ---
+  const githubProjects = [
+    { name: 'Interactive Login Dashboard', url: 'https://github.com/mkasanpedro/INTERACTIVE-LOGIN-DASHBOARD-LA3.2.git' },
+    { name: 'Crypto Pulse', url: 'https://github.com/mkasanpedro/crypto-pulse.git' },
+    { name: 'University Enrollment Portal', url: 'https://github.com/mkasanpedro/KEI-University-Enrollment-Portal.git' },
+    { name: 'Git Front End', url: 'https://github.com/mkasanpedro/git-frontend-project.git' },
+    { name: 'Internet Web Basics', url: 'https://github.com/mkasanpedro/internet-web-basics.git' },
+    { name: 'React ES6', url: 'https://github.com/mkasanpedro/react-es6-lab.git' }
+  ]
+
   const pubMats = [
     { title: 'General Assembly DP Blast', image: gablast },
     { title: 'Prelim Examination', image: prelim },
@@ -107,6 +117,57 @@ function Projects() {
           </div>
         </div>
       </motion.section>
+
+      {/* NEW: GitHub Projects Section */}
+      <section className="github-projects-section" style={{ marginTop: '80px' }}>
+        <motion.h2 
+          initial={{ opacity: 0 }} 
+          whileInView={{ opacity: 1 }} 
+          viewport={{ once: true }}
+        >
+          GitHub Projects
+        </motion.h2>
+        <p style={{ color: 'var(--text-secondary)', textAlign: 'center', marginBottom: '15px' }}>
+          Check out the source code for my web development projects.
+        </p>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginTop: '30px' }}>
+          {githubProjects.map((repo, index) => (
+            <motion.a
+              key={index}
+              href={repo.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -5, scale: 1.02 }}
+              style={{
+                textDecoration: 'none', 
+                background: 'var(--surface)', 
+                padding: '25px', 
+                borderRadius: '15px', 
+                border: '1px solid rgba(255, 102, 51, 0.3)', 
+                display: 'flex', 
+                flexDirection: 'column', 
+                justifyContent: 'center', 
+                position: 'relative', 
+                overflow: 'hidden'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '15px' }}>
+                <div style={{ fontSize: '2rem' }}>📁</div>
+                <ExternalLink size={20} color="var(--accent)" />
+              </div>
+              <h3 style={{ color: 'var(--text-primary)', margin: 0, fontSize: '1.2rem', lineHeight: '1.4' }}>{repo.name}</h3>
+              <div style={{ marginTop: '15px', color: 'var(--accent)', fontSize: '0.9rem', fontWeight: 'bold' }}>
+                View Repository &rarr;
+              </div>
+            </motion.a>
+          ))}
+        </div>
+      </section>
 
       {/* NEW: Publication Materials Gallery */}
       <section className="events-section" style={{ marginTop: '80px' }}>
